@@ -13,6 +13,6 @@ password = driver.find_element(By.CSS_SELECTOR, "#password").send_keys("SuperSec
 driver.find_element(By.CSS_SELECTOR, ".fa").click()
 
 logget = driver.find_element(By.CSS_SELECTOR, '#flash').text
-print(logget)
 
+print(logget)
 driver.quit()

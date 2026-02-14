@@ -28,4 +28,3 @@ def test_calculator():
 
     assert result == "15"
     browser.quit()
-# test_calculator()

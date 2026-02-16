@@ -11,3 +11,4 @@ class Address:
     def __str__(self):
         return (f"{self.code}, {self.city}, {self.street}, "
                 f"{self.hous} - {self.apartment}")
+

@@ -9,11 +9,18 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def test_bye():
     browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    waiter = WebDriverWait(browser, 4)
+    waiter = WebDriverWait(browser, 10)
 
     browser.get("https://www.saucedemo.com/")
-    browser.find_element(By.CSS_SELECTOR, "#user-name").send_keys("standard_user")
-    browser.find_element(By.CSS_SELECTOR, "#password").send_keys("secret_sauce")
+
+    usernames = browser.find_element(By.ID, "login_credentials").text.split("\n")
+    username = usernames[1]
+
+    password_for_all = browser.find_element(By.CLASS_NAME, "login_password").text.split("\n")
+    password = password_for_all[1]
+
+    browser.find_element(By.CSS_SELECTOR, "#user-name").send_keys(username)
+    browser.find_element(By.CSS_SELECTOR, "#password").send_keys(password)
     browser.find_element(By.CSS_SELECTOR, "#login-button").click()
 
     waiter.until(
@@ -46,6 +53,6 @@ def test_bye():
 
     total = browser.find_element(By.CSS_SELECTOR, "#checkout_summary_container > div > div.summary_info > div.summary_total_label").text
     total_sum = "Total: $58.29"
-    browser.quit()
-    
+
     assert total == total_sum
+    browser.quit()

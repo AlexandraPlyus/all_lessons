@@ -12,7 +12,7 @@ green = "rgba(15, 81, 50, 1)"
 
 def test_form():
     browser = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
-    waiter = WebDriverWait(browser, 4)
+    waiter = WebDriverWait(browser, 10)
 
     browser.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
     

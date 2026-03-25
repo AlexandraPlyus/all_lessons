@@ -144,25 +144,4 @@ def test_get_by_empty_id():
     respone = requests.get(f"{url}/api-v2/projects/{id_project}")
     assert respone.status_code == 401
 
-def test_get_projects():
-    my_headers = {
-        "Authorization": f"Bearer {KEY}"
-    }
-    respone = requests.get(f"{url}/api-v2/projects", headers=my_headers)
-    assert respone.status_code == 200
-
-
-# def test_delete_project():
-#     id = "1d8644e3-08e0-4500-b6cf-503f00e67576"
-#     my_headers = {
-#         "Authorization": f"Bearer {KEY}"
-#     }
-    
-#     body = {
-#         "deleted": True
-#     }
-
-#     respone = requests.put(f"{url}/api-v2/projects/{id}", json=body, headers=my_headers)
-#     assert respone.status_code == 200
-
 

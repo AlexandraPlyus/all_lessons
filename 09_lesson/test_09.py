@@ -69,8 +69,7 @@ def test_change_teacher_information():
         tables_exemplar.delete_change_teacher(change_email)
 
 
-# Это тест на УДАЛЕНИЕ учителя, но он идентичен первому,
-# т.к. в каждом тесте удаляла за собой данные
+# Тест на удаление учителя
 def test_delete_teacher():
 
     # Подключение
@@ -92,7 +91,7 @@ def test_delete_teacher():
         assert new_teacher.email == email
 
     finally:
-        # Удаляем созданного учителя, проверяем
+        # Удаляем созданного учителя, проверяем отсутствие
         tables_exemplar.delete_new_teacher(email)
         if new_teacher.email is None:
             pass

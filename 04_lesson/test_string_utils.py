@@ -16,13 +16,14 @@ stringutils = StringUtils
 # "!№;%:?*()-=_+<>?,./[]\{}|#$^&"
 # "123"
 
+
 @pytest.mark.positive
 @pytest.mark.parametrize(
-    'text, result', 
+    'text, result',
     [
-        ("pony", "Pony"), 
+        ("pony", "Pony"),
         ("пони", "Пони"),
-        ("PONY ПОНИ", "PONY ПОНИ"), 
+        ("PONY ПОНИ", "PONY ПОНИ"),
         ("по-ни", "По-ни")
         ]
     )
@@ -30,13 +31,14 @@ def test_capitalize_positive(text, result):
     res = stringutils.capitalize(str, text)
     assert res == result
 
+
 @pytest.mark.negative
 @pytest.mark.parametrize(
-    'text, result', 
+    'text, result',
     [
-        ("",""),
+        ("", ""),
         ("   ", "   "),
-        ("!№;%:?*()-=_+<>?,./[]\{}|#$^&", "!№;%:?*()-=_+<>?,./[]\{}|#$^&"),
+        ("!№;%:?*()-=_+<>?,./[]{}|#$^&", "!№;%:?*()-=_+<>?,./[]{}|#$^&"),
         ("123", "123")
     ]
 )
@@ -44,9 +46,10 @@ def test_capitalize_negative(text, result):
     res = stringutils.capitalize(str, text)
     assert res == result
 
+
 @pytest.mark.positive
 @pytest.mark.parametrize(
-    'text, result', 
+    'text, result',
     [
         ("   sun", "sun"),
         ("sun", "sun")
@@ -55,10 +58,11 @@ def test_capitalize_negative(text, result):
 def test_trim_positive(text, result):
     res = StringUtils.trim(str, text)
     assert res == result
-    
+
+
 @pytest.mark.negative
 @pytest.mark.parametrize(
-    'text, result', 
+    'text, result',
     [
         ("   ", ""),
         ("", "")
@@ -84,6 +88,7 @@ def test_trim_negative(text, result):
 # "" - ""
 # F - FF
 
+
 @pytest.mark.positive
 @pytest.mark.parametrize(
     'text, symb, result',
@@ -102,6 +107,7 @@ def test_contains_positive(text, symb, result):
     res = StringUtils.contains(str, text, symb)
     assert res == result
 
+
 @pytest.mark.negative
 @pytest.mark.parametrize(
     'text, symb, result',
@@ -114,6 +120,7 @@ def test_contains_positive(text, symb, result):
 def test_contains_negative(text, symb, result):
     res = StringUtils.contains(str, text, symb)
     assert res == result
+
 
 @pytest.mark.positive
 @pytest.mark.parametrize(
@@ -131,6 +138,7 @@ def test_contains_negative(text, symb, result):
 def test_delete_symbol_positive(text, symb, result):
     res = StringUtils.delete_symbol(str, text, symb)
     assert res == result
+
 
 @pytest.mark.negative
 @pytest.mark.parametrize(

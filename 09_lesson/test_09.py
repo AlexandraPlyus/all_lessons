@@ -92,5 +92,7 @@ def test_delete_teacher():
         assert new_teacher.email == email
 
     finally:
-        # Очищаем, закрываем
+        # Удаляем созданного учителя, проверяем
         tables_exemplar.delete_new_teacher(email)
+        if new_teacher.email is None:
+            pass

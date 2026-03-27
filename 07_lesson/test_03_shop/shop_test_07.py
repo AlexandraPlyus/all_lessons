@@ -1,19 +1,21 @@
-import pytest
 from selenium import webdriver
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
 
-from pages.ClassFromShopAutorization import ShopAutorization
-from pages.ClassFromShopCatalog import ShopCatalog
-from pages.ClassFromShopCart import ShopCart
-from pages.ClassFromShopPurchase import ShopPurchase
+from pages.ClassForShopAutorization import ShopAutorization
+from pages.ClassForShopCatalog import ShopCatalog
+from pages.ClassForShopCart import ShopCart
+from pages.ClassForShopPurchase import ShopPurchase
+
 
 def test_bye():
-    browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    
+    browser = webdriver.Firefox(
+        service=FirefoxService(GeckoDriverManager().install())
+        )
+
     shop_autorization_exemplar = ShopAutorization(browser)
     shop_autorization_exemplar.authorization()
-    
+
     shop_catalog_exemplar = ShopCatalog(browser)
     shop_catalog_exemplar.add_products()
 

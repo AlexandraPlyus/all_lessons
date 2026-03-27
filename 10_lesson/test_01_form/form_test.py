@@ -2,14 +2,12 @@ import allure
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service as EdgeService
 
-# from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 from ClassForForm import Form
 
 red = "rgba(132, 32, 41, 1)"
 green = "rgba(15, 81, 50, 1)"
-
-# EdgeChromiumDriverManager().install()
 
 
 @allure.title("Изменения цвета полей")
@@ -21,7 +19,10 @@ green = "rgba(15, 81, 50, 1)"
 def test_form():
 
     with allure.step("Настройка работы браузера"):
-        browser = webdriver.Edge(service=EdgeService())
+        browser = webdriver.Edge(
+            service=EdgeService(EdgeChromiumDriverManager().install())
+            )
+
         form_exemplar = Form(browser)
 
     form_exemplar.insert_values(

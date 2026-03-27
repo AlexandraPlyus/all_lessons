@@ -1,4 +1,3 @@
-import pytest
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service as EdgeService
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
@@ -7,6 +6,7 @@ from ClassFromForm import Form
 
 red = "rgba(132, 32, 41, 1)"
 green = "rgba(15, 81, 50, 1)"
+
 
 def test_form():
     browser = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))

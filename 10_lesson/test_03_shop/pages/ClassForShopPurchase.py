@@ -6,13 +6,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class ShopPurchase:
 
-    def __init__(self, browser_variable):
+    def __init__(self, browser_variable: str):
+        """
+        Функция принимает значение браузера,
+        и устанавливает ожидание 10 секунд
+        """
         self.browser = browser_variable
         self.browser.get("https://www.saucedemo.com/checkout-step-one.html")
         self.waiter = WebDriverWait(self.browser, 10)
 
     @allure.step("Заполнение контактных данных")
-    def insert_values(self, first_name, last_name, zip_code):
+    def insert_values(self, first_name: str, last_name: str, zip_code: str):
+        """
+        Функция берёт значения и заполняет ими поля по порядку
+        """
         self.browser.find_element(By.CSS_SELECTOR, "#first-name").send_keys(
             first_name
         )
@@ -34,7 +41,10 @@ class ShopPurchase:
             )
         )
 
-    def total(self):
+    def total(self) -> str:
+        """
+        Функция возвращает итоговую стоимость корзины
+        """
         return self.browser.find_element(
             By.CSS_SELECTOR,
             "#checkout_summary_container >" +

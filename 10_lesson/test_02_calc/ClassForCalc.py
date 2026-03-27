@@ -7,7 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 class Calc:
 
     @allure.step("Создание экземпляра класса от указанного браузера")
-    def __init__(self, browser_value):
+    def __init__(self, browser_value: str):
+        """
+        Функция принимает значение браузера,
+        и устанавливает ожидание 45 секунд
+        """
         self.browser = browser_value
         self.browser.get(
             "https:" +
@@ -16,12 +20,19 @@ class Calc:
         self.waiter = WebDriverWait(self.browser, 45)
 
     @allure.step("Установка задержки {value}")
-    def insert_value_delay(self, value):
+    def insert_value_delay(self, value: int):
+        """
+        Подставляет полученное значение в поле задержки
+        """
         self.browser.find_element(By.CSS_SELECTOR, "#delay").clear()
         self.browser.find_element(By.CSS_SELECTOR, "#delay").send_keys(value)
 
     @allure.step("Нажатие кнопки {button}")
-    def press_the_button(self, button):
+    def press_the_button(self, button: str):
+        """
+        Функция принимает значения и
+        нажимает на соответствующие кнопки на калькуляторе
+        """
         if button == "0":
             self.browser.find_element(
                 By.XPATH,
@@ -129,7 +140,10 @@ class Calc:
             EC.invisibility_of_element_located((By.CSS_SELECTOR, "#spinner"))
         )
 
-    def result(self):
+    def result(self) -> float:
+        """
+        Функция возвращает ответ калькулятора
+        """
         return self.browser.find_element(
             By.CSS_SELECTOR, "#calculator > div.top > div.screen"
         ).text

@@ -6,13 +6,21 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class ShopAutorization:
 
-    def __init__(self, browser_variable):
+    def __init__(self, browser_variable: str):
+        """
+        Функция принимает значение браузера,
+        и устанавливает ожидание 10 секунд
+        """
         self.browser = browser_variable
         self.browser.get("https://www.saucedemo.com/")
         self.waiter = WebDriverWait(self.browser, 10)
 
     @allure.step("Авторизация")
     def authorization(self):
+        """
+        Функция находит и подставляет
+        значения логина и пароля со страницы
+        """
         usernames = self.browser.find_element(
             By.ID, "login_credentials"
         ).text.split("\n")
